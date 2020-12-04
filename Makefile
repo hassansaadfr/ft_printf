@@ -6,7 +6,7 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2020/12/04 19:21:55 by hsaadaou         ###   ########.fr        #
+#    Updated: 2020/12/04 19:49:03 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	libftprintf.a
 
 LIBFT		=	libft.a
 
-SRCS		=	srcs/ft_printf.c
+SRCS		=	ft_printf.c
 
 HEADERS		=	includes
 
@@ -36,10 +36,11 @@ $(NAME) :		${OBJECTS}
 
 clean:
 				rm -rf ${OBJECTS}
+				rm -rf ${LIBFT}
 				make fclean -C libft
 
 fclean:			clean
-				rm -rf $(NAME) ${LIBFT}
+				rm -rf $(NAME) ${OBJECTS}
 
 re:				fclean all
 
