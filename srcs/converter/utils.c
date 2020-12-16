@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/16 20:21:04 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/12/16 20:25:40 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdlib.h>
-# include "../libft/libft.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
-int		ft_printf(const char *, ...);
-int		ft_args_count(char *str);
-char	*get_pointer_address(void *var);
-double	ft_atod(char *str);
-char	*convert_number(long long nbr, char *base);
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char	*get_pointer_address(void *var)
+{
+	char	*address;
+	char	*dec_base;
+	char	*hexa_base;
 
-#endif
+	dec_base = "0123456789";
+	hexa_base = "0123456789abcdef";
+
+	address = ft_convert_base(ft_itoa((long int)(&(*var))), dec_base, hexa_base);
+	return (ft_strjoin("0x10", address));
+}
