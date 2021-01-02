@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_arg_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/29 17:53:24 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/12/28 13:43:13 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/12/28 13:46:00 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-
-int		ft_printf(const char *str, ...)
+void	ft_arg_p(va_list arg)
 {
-	va_list		arg_list;
+	long int	argument;
+	char		*out;
+	char		*base_to;
 
-	va_start(arg_list, str);
-	ft_process_args(str, arg_list, NULL);
-	return (1);
+	base_to = HEXA_LOWER;
+	argument = (long int)va_arg(arg, long int);
+	out = ft_convert_hex(argument, base_to);
+	ft_putstr("0x");
+	ft_putstr(out);
 }

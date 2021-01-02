@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ftt_putnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/29 17:53:24 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/12/20 18:05:42 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/12/20 18:05:59 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-
-int		ft_printf(const char *str, ...)
+void	ft_putnbr(int nb)
 {
-	va_list		arg_list;
+	long int	nbr;
 
-	va_start(arg_list, str);
-	ft_process_args(str, arg_list, NULL);
-	return (1);
+	nbr = nb;
+	if (nb == -2147483648)
+	{
+		ft_putchar('-');
+		nbr = 2147483648;
+	}
+	if (nbr < 0)
+	{
+		ft_putchar('-');
+		nbr = nb * -1;
+	}
+	if (nbr >= 10)
+	{
+		ft_putnbr(nbr / 10);
+		ft_putchar(nbr % 10 + '0');
+	}
+	if (nbr < 10)
+	{
+		ft_putchar(nbr % 10 + '0');
+	}
 }

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/29 17:53:24 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/12/20 17:00:23 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/12/20 19:22:03 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-
-int		ft_printf(const char *str, ...)
+void			ft_putstr(const char *s)
 {
-	va_list		arg_list;
-
-	va_start(arg_list, str);
-	ft_process_args(str, arg_list, NULL);
-	return (1);
+	if (!s)
+		return ;
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+	}
 }

@@ -6,22 +6,34 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/16 20:25:40 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2020/12/31 22:11:20 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*get_pointer_address(void *var)
+char	*ft_convert_hex(long int var, char *base_to)
 {
 	char	*address;
-	char	*dec_base;
-	char	*hexa_base;
+	char	*dec;
 
-	dec_base = "0123456789";
-	hexa_base = "0123456789abcdef";
+	dec = "0123456789";
+	address = ft_convert_base(ft_itoa(var), dec, base_to);
+	return (address);
+}
 
-	address = ft_convert_base(ft_itoa((long int)(&(*var))), dec_base, hexa_base);
-	return (ft_strjoin("0x10", address));
+void	ft_part_putstr(const char *s, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (*s && i < len)
+	{
+		write(1, s, 1);
+		s++;
+		i++;
+	}
 }
