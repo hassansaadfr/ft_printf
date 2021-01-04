@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 22:32:37 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/04 16:55:43 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	ft_part_putstr(const char *s, size_t len)
 
 void	ft_print_char(char c, int nb)
 {
-	while (nb--)
+	while (nb-- > 0)
 		ft_putchar(c);
 }

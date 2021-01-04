@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 22:19:09 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:06:52 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_treat_s_precision(char *arg, t_precision *lst, size_t star)
 	size_t	len;
 	int		space_nb;
 
-	if ((int)ft_strlen(arg) < lst->after_dot)
+	if (ft_strlen(arg) < lst->after_dot)
 		len = ft_strlen(arg);
 	else
 		len = lst->after_dot;

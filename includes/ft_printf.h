@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 22:33:47 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:06:37 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 
 # define HEXA_LOWER "0123456789abcdef"
 # define HEXA_UPPER "0123456789ABCDEF"
+# define NOT_SET (size_t)-1
 
 typedef struct			s_precision {
-	int					substitution;
-	int					align_right;
-	size_t				size;
-	int					after_dot;
-	int					star_precision;
-	char				type;
+	size_t					substitution;
+	size_t					align_right;
+	size_t					size;
+	size_t					after_dot;
+	size_t					star_precision;
+	char					type;
 }						t_precision;
 
 int		ft_printf(const char *, ...);
