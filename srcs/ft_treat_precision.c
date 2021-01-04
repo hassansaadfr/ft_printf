@@ -6,14 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/31 21:36:22 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/02 22:19:58 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-void		ft_lst_prec_delone(t_precision **lst)
+void				ft_lst_prec_delone(t_precision **lst)
 {
 	if (!*lst)
 		return ;
@@ -27,7 +26,7 @@ void		ft_lst_prec_delone(t_precision **lst)
 	free(*lst);
 }
 
-int			ft_lst_new_prec(t_precision **lst)
+static int			ft_lst_new_prec(t_precision **lst)
 {
 	if (!(*lst = malloc(sizeof(t_precision))))
 		return (-1);
@@ -40,7 +39,7 @@ int			ft_lst_new_prec(t_precision **lst)
 	return (1);
 }
 
-t_precision	*ft_lst_init(char *str)
+static t_precision	*ft_lst_init(char *str)
 {
 	t_precision		*tmp;
 	int				i;
@@ -69,7 +68,7 @@ t_precision	*ft_lst_init(char *str)
 	return (tmp);
 }
 
-void		ft_treat_precision(int *i, const char *str, t_precision **lst)
+void				ft_treat_precision(int *i, const char *str, t_precision **lst)
 {
 	int		l;
 	char	*tmp;

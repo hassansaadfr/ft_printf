@@ -6,14 +6,14 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 21:43:38 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/02 22:19:09 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	ft_treat_s_precision(char *arg, t_precision *lst, size_t star)
+static void	ft_treat_s_precision(char *arg, t_precision *lst, size_t star)
 {
 	size_t	len;
 	int		space_nb;

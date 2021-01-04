@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/31 22:11:20 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/02 22:32:37 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ void	ft_part_putstr(const char *s, size_t len)
 		s++;
 		i++;
 	}
+}
+
+void	ft_print_char(char c, int nb)
+{
+	while (nb--)
+		ft_putchar(c);
 }

@@ -6,12 +6,11 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 21:44:47 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/02 22:16:16 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void			ft_process_args(const char *s, va_list arg, t_precision *lst)
 {
@@ -31,7 +30,7 @@ void			ft_process_args(const char *s, va_list arg, t_precision *lst)
 			else if (s[i] == 'p')
 				ft_arg_p(arg);
 			else if (s[i] == 'd' || s[i] == 'i' || s[i] == 'u')
-				ft_arg_d(arg);
+				ft_arg_d(arg, &lst);
 			else if (s[i] == 'x' || s[i] == 'X')
 				ft_arg_x(arg, s[i] == 'X');
 			i++;
