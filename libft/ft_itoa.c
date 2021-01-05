@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:03:10 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/20 20:42:44 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:27:28 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		ft_nb_len(long nb)
 char			*ft_itoa(long int nb)
 {
 	char		*str;
-	long int 	nbr;
+	long int	nbr;
 	int			len;
 
 	nbr = nb;

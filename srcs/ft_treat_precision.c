@@ -6,13 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/04 15:24:35 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/05 22:33:23 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				ft_lst_prec_delone(t_precision **lst)
+void				ft_lst_prec_delone(t_prec **lst)
 {
 	if (!*lst)
 		return ;
@@ -26,22 +26,22 @@ void				ft_lst_prec_delone(t_precision **lst)
 	free(*lst);
 }
 
-static int			ft_lst_new_prec(t_precision **lst)
+static int			ft_lst_new_prec(t_prec **lst)
 {
-	if (!(*lst = malloc(sizeof(t_precision))))
+	if (!(*lst = malloc(sizeof(t_prec))))
 		return (-1);
 	(*lst)->after_dot = NOT_SET;
 	(*lst)->align_right = NOT_SET;
-	(*lst)->size = NOT_SET;
+	(*lst)->size = 0;
 	(*lst)->substitution = NOT_SET;
 	(*lst)->type = 0;
 	(*lst)->star_precision = NOT_SET;
 	return (1);
 }
 
-static t_precision	*ft_lst_init(char *str)
+static t_prec		*ft_lst_init(char *str)
 {
-	t_precision		*tmp;
+	t_prec			*tmp;
 	int				i;
 
 	i = 0;
@@ -68,7 +68,7 @@ static t_precision	*ft_lst_init(char *str)
 	return (tmp);
 }
 
-void				ft_treat_precision(int *i, const char *str, t_precision **lst)
+void				ft_treat_prec(int *i, const char *str, t_prec **lst)
 {
 	int		l;
 	char	*tmp;

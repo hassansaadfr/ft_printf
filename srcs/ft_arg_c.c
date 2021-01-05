@@ -6,21 +6,53 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:00 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/02 21:21:19 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/05 22:27:45 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_arg_c(va_list arg, char c)
+static void	ft_treat_char_precision(char arg, t_prec *lst)
+{
+	if (lst->size != NOT_SET)
+	{
+		if (lst->align_right == NOT_SET)
+		{
+			ft_print_char(' ', lst->size - 1);
+			ft_putchar(arg);
+		}
+		else
+		{
+			ft_putchar(arg);
+			ft_print_char(' ', lst->size);
+		}
+	}
+}
+
+void		ft_arg_c(va_list arg, char c, t_prec **lst)
 {
 	unsigned char	argument;
 
 	if (c == '%')
+	{
 		ft_putchar('%');
+		if (*lst)
+			ft_lst_prec_delone(&(*lst));
+	}
 	else
 	{
-		argument = (unsigned char)va_arg(arg, int);
-		ft_putchar(argument);
+		if (*lst)
+		{
+			if ((*lst)->star_precision != NOT_SET)
+				(*lst)->after_dot = (int)va_arg(arg, int);
+			argument = (unsigned char)va_arg(arg, int);
+			ft_treat_char_precision(argument, *lst);
+			ft_lst_prec_delone(&(*lst));
+		}
+		else
+		{
+			argument = (unsigned char)va_arg(arg, int);
+			ft_putchar(argument);
+		}
 	}
 }

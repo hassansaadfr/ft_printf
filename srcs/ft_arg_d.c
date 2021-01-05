@@ -6,13 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/04 17:11:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:33:20 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_treat_s_precision(char *arg, t_precision *lst)
+static void	ft_treat_int_prec(char *arg, t_prec *lst)
 {
 	size_t	zeros;
 	size_t	space_nb;
@@ -31,7 +31,7 @@ static void	ft_treat_s_precision(char *arg, t_precision *lst)
 		ft_print_char(' ', space_nb);
 }
 
-void	ft_arg_d(va_list arg, t_precision **lst)
+void		ft_arg_d(va_list arg, t_prec **lst)
 {
 	char		*argument;
 
@@ -40,7 +40,7 @@ void	ft_arg_d(va_list arg, t_precision **lst)
 		if ((*lst)->star_precision != NOT_SET)
 			(*lst)->after_dot = (int)va_arg(arg, int);
 		argument = ft_itoa((int)va_arg(arg, int));
-		ft_treat_s_precision(argument, *lst);
+		ft_treat_int_prec(argument, *lst);
 		ft_lst_prec_delone(&(*lst));
 	}
 	else
