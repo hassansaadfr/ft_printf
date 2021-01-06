@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:32:33 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:38:52 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,5 @@ void			ft_process_args(const char *s, va_list arg, t_prec *lst)
 		}
 		else
 			ft_putchar(s[i++]);
-		// printf("\ncant -> %c\n", s[i]);
-		// i++;
 	}
 }
