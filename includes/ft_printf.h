@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/05 23:03:38 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/05 23:33:32 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ typedef struct			s_precision {
 	size_t					star_precision;
 	char					type;
 }						t_prec;
+
+void	ft_putchar(char c);
+char	*ft_itoa(long int nb);
+int		ft_atoi(char *str);
+char	*ft_substr(char const *s, size_t start, size_t len);
+void	ft_putstr(const char *s);
+size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 int		ft_printf(const char *, ...);
 int		ft_args_count(char *str);
