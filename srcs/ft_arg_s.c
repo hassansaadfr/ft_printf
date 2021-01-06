@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 11:21:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:48:41 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,19 @@ static void	ft_treat_s_precision(char *arg, t_prec *lst)
 void		ft_arg_s(va_list arg, t_prec **lst)
 {
 	char	*argument;
+	int		is_empty;
 
+	is_empty = 0;
 	if (*lst)
 	{
 		if ((*lst)->star_precision != NOT_SET)
 			(*lst)->after_dot = (int)va_arg(arg, int);
 		argument = (char*)va_arg(arg, char*);
 		if (!argument)
+		{
 			argument = ft_strdup("(null)");
+			is_empty = 1;
+		}
 		ft_treat_s_precision(argument, *lst);
 		ft_lst_prec_delone(&(*lst));
 	}
@@ -65,8 +70,12 @@ void		ft_arg_s(va_list arg, t_prec **lst)
 	{
 		argument = (char*)va_arg(arg, char*);
 		if (!argument)
+		{
 			argument = ft_strdup("(null)");
+			is_empty = 1;
+		}
 		ft_putstr(argument);
 	}
-	free(argument);
+	if (is_empty)
+		free(argument);
 }
