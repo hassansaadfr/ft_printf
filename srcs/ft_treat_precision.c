@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 13:28:01 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 22:11:37 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ static int		ft_lst_new_prec(t_prec **lst)
 
 static int		ft_get_star_arg(va_list arg, char *str)
 {
+	int		out;
+
+	out = 0;
 	if (str[0] == '*')
-		return ((int)va_arg(arg, int));
+		out = (int)va_arg(arg, int);
 	else
-		return (ft_atoi(str));
-	return (0);
+		out = ft_atoi(str);
+	return (out);
 }
 
 static t_prec	*ft_lst_init(va_list arg, char *str)
@@ -60,8 +63,13 @@ static t_prec	*ft_lst_init(va_list arg, char *str)
 		i++;
 	}
 	if (str[i] == '0')
+	{
 		tmp->substitution = 1;
+		i++;
+	}
 	tmp->size = ft_get_star_arg(arg, str + i);
+	if (tmp->size < 0 && tmp->substitution == 1)
+		tmp->substitution = 0;
 	while (str[i] && ((str[i] >= '0' && str[i] <= '9') || str[i] == '*'))
 		i++;
 	if (str[i] && str[i] == '.')

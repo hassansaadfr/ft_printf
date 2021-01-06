@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:54:49 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 23:03:58 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
 	}
 }
 
-static void	ft_treat_s_precision(char *arg, t_prec *lst)
+static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
 {
 	int		nb_space;
 	int		len;
@@ -45,9 +45,10 @@ static void	ft_treat_s_precision(char *arg, t_prec *lst)
 			nb_space = lst->size - len;
 	}
 	ft_print(arg, nb_space, lst->after_dot, lst->align_right == NOT_SET);
+	size +=  nb_space + lst->after_dot;
 }
 
-void		ft_arg_s(va_list arg, t_prec **lst)
+void		ft_arg_s(va_list arg, t_prec **lst, int *size)
 {
 	char	*argument;
 
@@ -55,16 +56,23 @@ void		ft_arg_s(va_list arg, t_prec **lst)
 	{
 		argument = (char*)va_arg(arg, char*);
 		if (!argument)
-			ft_treat_s_precision("(null)", *lst);
+			ft_treat_s_precision("(null)", *lst, size);
 		else
-			ft_treat_s_precision(argument, *lst);
+			ft_treat_s_precision(argument, *lst, size);
 		ft_lst_prec_delone(&(*lst));
 	}
 	else
 	{
 		argument = (char*)va_arg(arg, char*);
 		if (!argument)
+		{
 			ft_putstr("(null)");
-		ft_putstr(argument);
+			size +=  ft_strlen("(null)");
+		}
+		else
+		{
+			ft_putstr(argument);
+			size +=  ft_strlen(argument);
+		}
 	}
 }

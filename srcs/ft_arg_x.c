@@ -6,13 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:55 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:54:53 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 23:04:57 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_treat_x_precision(char *arg, t_prec *lst)
+static void	ft_treat_x_precision(char *arg, t_prec *lst, int *size)
 {
 	size_t	zeros;
 	size_t	space_nb;
@@ -25,20 +25,21 @@ static void	ft_treat_x_precision(char *arg, t_prec *lst)
 	space_nb = lst->size - ((int)ft_strlen(arg) + zeros);
 	if (lst->align_right == NOT_SET)
 	{
-		if (lst->substitution)
+		if (lst->substitution != NOT_SET)
 			ft_print_char('0', space_nb);
 		else
 			ft_print_char(' ', space_nb);
 	}
 	ft_print_char('0', zeros);
 	ft_putstr(arg);
+	size +=  space_nb + zeros + ft_strlen(arg);
 	if (lst->align_right == 1)
 		ft_print_char(' ', space_nb);
 }
 
-void		ft_arg_x(va_list arg, int is_upper, t_prec **lst)
+void		ft_arg_x(va_list arg, int is_upper, t_prec **lst, int *size)
 {
-	long int	argument;
+	long		argument;
 	char		*out;
 	char		*base_to;
 
@@ -48,16 +49,17 @@ void		ft_arg_x(va_list arg, int is_upper, t_prec **lst)
 		base_to = HEXA_LOWER;
 	if (*lst)
 	{
-		argument = (long int)va_arg(arg, long int);
+		argument = (unsigned int)va_arg(arg, unsigned int);
 		out = ft_convert_hex(argument, base_to);
-		ft_treat_x_precision(out, *lst);
+		ft_treat_x_precision(out, *lst, size);
 		ft_lst_prec_delone(&(*lst));
 	}
 	else
 	{
-		argument = (long int)va_arg(arg, long int);
+		argument = (unsigned int)va_arg(arg, unsigned int);
 		out = ft_convert_hex(argument, base_to);
 		ft_putstr(out);
+		size +=  ft_strlen(out);
 	}
 	free(out);
 }

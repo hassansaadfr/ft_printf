@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 17:00:23 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/12/20 19:22:03 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 22:58:30 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_putstr(const char *s)
 {
-	if (!s)
+	if (!s || !*s)
 		return ;
 	while (*s)
 	{

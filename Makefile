@@ -6,13 +6,13 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/06 14:08:04 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/06 14:56:39 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	clang
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -g
 
 NAME		=	libftprintf.a
 
