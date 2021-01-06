@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/05 21:33:20 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:23:33 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void		ft_arg_d(va_list arg, t_prec **lst)
 	{
 		argument = ft_itoa((int)va_arg(arg, int));
 		ft_putstr(argument);
-		free(argument);
 	}
+	free(argument);
 }
