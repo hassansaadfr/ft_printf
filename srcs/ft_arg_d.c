@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 11:23:33 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:17:11 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_treat_int_prec(char *arg, t_prec *lst)
 	zeros = 0;
 	space_nb = 0;
 	if (lst->after_dot != NOT_SET)
-		if (lst->after_dot > ft_strlen(arg))
+		if (lst->after_dot > (int)ft_strlen(arg))
 			zeros = lst->after_dot - ft_strlen(arg);
 	space_nb = lst->size - (ft_strlen(arg) + zeros);
 	if (lst->align_right == NOT_SET)

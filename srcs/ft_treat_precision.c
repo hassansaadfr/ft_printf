@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/05 22:33:23 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:16:33 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int			ft_lst_new_prec(t_prec **lst)
 {
 	if (!(*lst = malloc(sizeof(t_prec))))
 		return (-1);
-	(*lst)->after_dot = NOT_SET;
-	(*lst)->align_right = NOT_SET;
+	(*lst)->after_dot = -1;
+	(*lst)->align_right = -1;
 	(*lst)->size = 0;
-	(*lst)->substitution = NOT_SET;
+	(*lst)->substitution = -1;
 	(*lst)->type = 0;
-	(*lst)->star_precision = NOT_SET;
+	(*lst)->star_precision = -1;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:43:13 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/05 23:07:32 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:17:32 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void		ft_treat_p_precision(char *arg, t_prec *lst)
 	size_t nb_space;
 
 	nb_space = 0;
-	if (lst->size > ft_strlen(arg))
-		nb_space = lst->size - ft_strlen(arg);
+	if (lst->size > (int)ft_strlen(arg))
+		nb_space = lst->size - (int)ft_strlen(arg);
 	if (lst->size != NOT_SET)
 	{
 		if (lst->align_right == NOT_SET)

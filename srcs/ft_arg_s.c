@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 11:48:41 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:18:13 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
 static void	ft_treat_s_precision(char *arg, t_prec *lst)
 {
 	int		nb_space;
-	size_t	len;
+	int		len;
 
 	len = ft_strlen(arg);
 	nb_space = 0;
