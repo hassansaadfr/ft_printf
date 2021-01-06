@@ -6,7 +6,7 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/06 12:37:17 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/06 14:08:04 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS		=	ft_printf.c srcs/parse_args.c \
 				srcs/ft_arg_s.c srcs/ft_arg_x.c libft/ft_atoi.c libft/ft_itoa.c \
 				libft/ft_putchar.c libft/ft_putstr.c libft/ft_strlen.c \
 				libft/ft_strjoin.c libft/ft_substr.c libft/ft_calloc.c \
-				libft/ft_bzero.c libft/ft_strdup.c libft/ft_strlcpy.c
+				libft/ft_bzero.c libft/ft_strdup.c libft/ft_strlcpy.c \
+				libft/ft_strchr.c
 
 HEADERS		=	includes
 

@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:41:26 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:54:49 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void		ft_arg_s(va_list arg, t_prec **lst)
 
 	if (*lst)
 	{
-		if ((*lst)->star_precision != NOT_SET)
-			(*lst)->after_dot = (int)va_arg(arg, int);
 		argument = (char*)va_arg(arg, char*);
 		if (!argument)
 			ft_treat_s_precision("(null)", *lst);

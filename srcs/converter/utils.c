@@ -6,12 +6,11 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/04 16:55:43 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 13:53:04 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 char	*ft_convert_hex(long int var, char *base_to)
 {

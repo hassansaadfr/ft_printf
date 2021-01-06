@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:43:13 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:17:32 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:54:45 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void			ft_arg_p(va_list arg, t_prec **lst)
 	base_to = HEXA_LOWER;
 	if (*lst)
 	{
-		if ((*lst)->star_precision != NOT_SET)
-			(*lst)->after_dot = (int)va_arg(arg, int);
 		argument = (long int)va_arg(arg, long int);
 		out = ft_convert_hex(argument, base_to);
 		ft_treat_p_precision(out, *lst);

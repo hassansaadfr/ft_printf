@@ -6,13 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:16:33 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 13:28:01 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				ft_lst_prec_delone(t_prec **lst)
+void			ft_lst_prec_delone(t_prec **lst)
 {
 	if (!*lst)
 		return ;
@@ -21,12 +21,11 @@ void				ft_lst_prec_delone(t_prec **lst)
 	(*lst)->size = 0;
 	(*lst)->substitution = 0;
 	(*lst)->type = 0;
-	(*lst)->star_precision = 0;
 	(*lst) = NULL;
 	free(*lst);
 }
 
-static int			ft_lst_new_prec(t_prec **lst)
+static int		ft_lst_new_prec(t_prec **lst)
 {
 	if (!(*lst = malloc(sizeof(t_prec))))
 		return (-1);
@@ -35,11 +34,19 @@ static int			ft_lst_new_prec(t_prec **lst)
 	(*lst)->size = 0;
 	(*lst)->substitution = -1;
 	(*lst)->type = 0;
-	(*lst)->star_precision = -1;
 	return (1);
 }
 
-static t_prec		*ft_lst_init(char *str)
+static int		ft_get_star_arg(va_list arg, char *str)
+{
+	if (str[0] == '*')
+		return ((int)va_arg(arg, int));
+	else
+		return (ft_atoi(str));
+	return (0);
+}
+
+static t_prec	*ft_lst_init(va_list arg, char *str)
 {
 	t_prec			*tmp;
 	int				i;
@@ -54,21 +61,16 @@ static t_prec		*ft_lst_init(char *str)
 	}
 	if (str[i] == '0')
 		tmp->substitution = 1;
-	tmp->size = ft_atoi(str + i);
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	tmp->size = ft_get_star_arg(arg, str + i);
+	while (str[i] && ((str[i] >= '0' && str[i] <= '9') || str[i] == '*'))
 		i++;
 	if (str[i] && str[i] == '.')
-	{
-		if (str[i + 1] == '*')
-			tmp->star_precision = 1;
-		else
-			tmp->after_dot = ft_atoi(str + i + 1);
-	}
+		tmp->after_dot = ft_get_star_arg(arg, str + i + 1);
 	tmp->type = str[ft_strlen(str) - 1];
 	return (tmp);
 }
 
-void				ft_treat_prec(int *i, const char *str, t_prec **lst)
+void			ft_treat_prec(va_list a, int *i, const char *str, t_prec **lst)
 {
 	int		l;
 	char	*tmp;
@@ -79,7 +81,7 @@ void				ft_treat_prec(int *i, const char *str, t_prec **lst)
 		l++;
 	tmp = ft_substr(str + *i, 0, ((l + 1) - *i));
 	if (ft_strlen(tmp))
-		*lst = ft_lst_init(tmp);
+		*lst = ft_lst_init(a, tmp);
 	free(tmp);
 	*i = l;
 }

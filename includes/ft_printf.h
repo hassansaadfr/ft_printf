@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 12:17:00 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/06 13:30:55 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct			s_precision {
 	int					align_right;
 	int					size;
 	int					after_dot;
-	int					star_precision;
 	char				type;
 }						t_prec;
 
@@ -40,6 +39,7 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);
+char	*ft_strchr(const char *s, int c);
 
 int		ft_printf(const char *, ...);
 int		ft_args_count(char *str);
@@ -47,7 +47,7 @@ char	*ft_convert_hex(long int var, char *base_to);
 char	*convert_number(long long nbr, char *base);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 void	ft_process_args(const char *s, va_list arg, t_prec *lst);
-void	ft_treat_prec(int *i, const char *str, t_prec **lst);
+void	ft_treat_prec(va_list arg, int *i, const char *str, t_prec **lst);
 void	ft_arg_c(va_list arg, char c, t_prec **lst);
 void	ft_arg_d(va_list arg, t_prec **lst);
 void    ft_arg_s(va_list arg, t_prec **lst);
