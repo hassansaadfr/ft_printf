@@ -6,13 +6,13 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/06 12:10:20 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/06 12:37:17 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	clang
 
-FLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g
+FLAGS		=	-Wall -Wextra -Werror
 
 NAME		=	libftprintf.a
 
