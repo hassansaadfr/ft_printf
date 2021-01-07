@@ -6,13 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 02:08:44 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 21:35:57 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
+static int	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
 {
 	if (align_right)
 	{
@@ -21,9 +21,10 @@ static void	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
 	}
 	else
 	{
-		ft_print_char(' ', nb_space);
 		ft_part_putstr(s, after_dot);
+		ft_print_char(' ', nb_space);
 	}
+	return (nb_space + after_dot);
 }
 
 static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
@@ -44,8 +45,7 @@ static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
 		if (lst->size > len)
 			nb_space = lst->size - len;
 	}
-	ft_print(arg, nb_space, lst->after_dot, lst->align_right == NOT_SET);
-	*size += nb_space + lst->after_dot;
+	*size = ft_print(arg, nb_space, lst->after_dot, !lst->align_right);
 }
 
 void		ft_arg_s(va_list arg, t_prec **lst, int *size)

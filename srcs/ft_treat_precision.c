@@ -6,11 +6,13 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 22:11:37 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 21:47:31 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+// TODO Blinder la function pour recuperer la precision Checker si double point double moins etc ... return si erreur pour print
 
 void			ft_lst_prec_delone(t_prec **lst)
 {
@@ -74,7 +76,9 @@ static t_prec	*ft_lst_init(va_list arg, char *str)
 		i++;
 	if (str[i] && str[i] == '.')
 		tmp->after_dot = ft_get_star_arg(arg, str + i + 1);
-	tmp->type = str[ft_strlen(str) - 1];
+	tmp->type = 0;
+	if (ft_strchr("csxXpuid", str[ft_strlen(str) - 1]))
+		tmp->type = str[ft_strlen(str) - 1];
 	return (tmp);
 }
 
@@ -84,8 +88,9 @@ void			ft_treat_prec(va_list a, int *i, const char *str, t_prec **lst)
 	char	*tmp;
 
 	l = *i + 1;
-	while (str[l] && ((str[l] >= '0' && str[l] <= '9')
-	|| str[l] == '.' || str[l] == '-' || str[l] == '*'))
+	if (!str[l])
+		return ;
+	while (str[l] && ft_strchr("0123456789*.-", str[l]))
 		l++;
 	tmp = ft_substr(str + *i, 0, ((l + 1) - *i));
 	if (ft_strlen(tmp))

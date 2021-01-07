@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:38:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 19:30:40 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 21:02:06 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1021,8 +1021,7 @@ int		main()
     // printf("\n");
     // ft_printf("-- %d --\n", ft_printf("7uXTB%0d%0*ixn%%nmPkD%c%18.*x%s", 153649672, -10, 2147483647, '\0', 0, 2147483647, NULL));
     // printf("\n");
-	ft_printf(" %d\n", ft_printf("%-60.40p", 1234));
-	printf(" %d\n", printf("%-60.40p", 1234));
+	ft_printf("%5");
 	return (0);
 }
 
