@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:55 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 23:04:57 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 02:08:58 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_treat_x_precision(char *arg, t_prec *lst, int *size)
 	}
 	ft_print_char('0', zeros);
 	ft_putstr(arg);
-	size +=  space_nb + zeros + ft_strlen(arg);
+	*size += space_nb + zeros + ft_strlen(arg);
 	if (lst->align_right == 1)
 		ft_print_char(' ', space_nb);
 }
@@ -59,7 +59,7 @@ void		ft_arg_x(va_list arg, int is_upper, t_prec **lst, int *size)
 		argument = (unsigned int)va_arg(arg, unsigned int);
 		out = ft_convert_hex(argument, base_to);
 		ft_putstr(out);
-		size +=  ft_strlen(out);
+		*size += ft_strlen(out);
 	}
 	free(out);
 }

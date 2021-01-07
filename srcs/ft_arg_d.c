@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 23:03:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 02:14:29 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_treat_int_prec(char *arg, t_prec *lst, int *size)
 	ft_putstr(arg);
 	if (lst->align_right == 1)
 		ft_print_char(' ', space_nb);
-	size +=  zeros + space_nb;
+	*size += zeros + space_nb;
 }
 
 void		ft_arg_d(va_list arg, t_prec **lst, int *size)
@@ -46,7 +46,7 @@ void		ft_arg_d(va_list arg, t_prec **lst, int *size)
 	{
 		argument = ft_itoa((int)va_arg(arg, int));
 		ft_putstr(argument);
-		size +=  ft_strlen(argument);
+		*size += ft_strlen(argument);
 	}
 	free(argument);
 }

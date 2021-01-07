@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:00 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 23:03:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 02:14:40 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_treat_char_precision(char arg, t_prec *lst, int *size)
 			ft_putchar(arg);
 			ft_print_char(' ', lst->size);
 		}
-		size +=   lst->size + 1;
+		*size += lst->size + 1;
 	}
 }
 
@@ -52,7 +52,7 @@ void		ft_arg_c(va_list arg, char c, t_prec **lst, int *size)
 		{
 			argument = (unsigned char)va_arg(arg, int);
 			ft_putchar(argument);
-			size +=  1;
+			*size += 1;
 		}
 	}
 }

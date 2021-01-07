@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 23:03:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 02:08:44 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
 			nb_space = lst->size - len;
 	}
 	ft_print(arg, nb_space, lst->after_dot, lst->align_right == NOT_SET);
-	size +=  nb_space + lst->after_dot;
+	*size += nb_space + lst->after_dot;
 }
 
 void		ft_arg_s(va_list arg, t_prec **lst, int *size)
@@ -67,12 +67,12 @@ void		ft_arg_s(va_list arg, t_prec **lst, int *size)
 		if (!argument)
 		{
 			ft_putstr("(null)");
-			size +=  ft_strlen("(null)");
+			*size += ft_strlen("(null)");
 		}
 		else
 		{
 			ft_putstr(argument);
-			size +=  ft_strlen(argument);
+			*size += ft_strlen(argument);
 		}
 	}
 }

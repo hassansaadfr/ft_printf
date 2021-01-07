@@ -6,40 +6,45 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:43:13 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 23:03:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/07 02:19:24 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static void		ft_print_precision(int zeros, int spaces, char *arg, int right)
+{
+	if (!right)
+	{
+		ft_print_char(' ', spaces);
+		ft_putstr("0x");
+		ft_print_char('0', zeros);
+		ft_putstr(arg);
+	}
+	else
+	{
+		ft_putstr("0x");
+		ft_print_char('0', zeros);
+		ft_putstr(arg);
+		ft_print_char(' ', spaces);
+	}
+}
+
 static void		ft_treat_p_precision(char *arg, t_prec *lst, int *size)
 {
-	int	nb_space;
-	int	nb_zeros;
+	int	space;
+	int	zeros;
 
-	nb_space = 0;
-	nb_zeros = 0;
+	space = 0;
+	zeros = 0;
 	if (lst->size > (int)ft_strlen(arg))
-		nb_space = lst->size - ft_strlen(arg);
+		space = lst->size - ft_strlen(arg);
 	if (lst->size != NOT_SET)
 	{
-		nb_zeros = lst->after_dot - ft_strlen(arg);
-		if (lst->align_right == NOT_SET)
-		{
-			ft_print_char(' ', nb_space);
-			ft_putstr("0x");
-			ft_print_char('0', nb_zeros);
-			ft_putstr(arg);
-		}
-		else
-		{
-			ft_putstr("0x");
-			ft_print_char('0', nb_zeros);
-			ft_putstr(arg);
-			ft_print_char(' ', nb_space);
-		}
+		zeros = lst->after_dot - ft_strlen(arg);
+		ft_print_precision(zeros, space, arg, lst->align_right == NOT_SET);
 	}
-	size +=  nb_space + nb_zeros;
+	*size += space + zeros;
 }
 
 void			ft_arg_p(va_list arg, t_prec **lst, int *size)
@@ -61,7 +66,7 @@ void			ft_arg_p(va_list arg, t_prec **lst, int *size)
 		out = ft_convert_hex(argument, HEXA_LOWER);
 		dest = ft_strjoin("0x", out);
 		ft_putstr(dest);
-		size +=  ft_strlen(dest);
+		*size += ft_strlen(dest);
 		free(dest);
 	}
 	free(out);
