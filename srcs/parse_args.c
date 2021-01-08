@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 21:42:32 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/08 18:06:36 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_print_errors(t_prec **lst, const char *s, int end, int *size)
 		ft_lst_prec_delone(&(*lst));
 }
 
-void		ft_treat(char s, va_list arg, t_prec **lst, int *size)
+void		ft_treat(char s, va_list arg, t_prec **lst, int *size, int *i)
 {
 	if (s == 'c' || s == '%')
 		ft_arg_c(arg, s, &(*lst), size);
@@ -38,7 +38,7 @@ void		ft_treat(char s, va_list arg, t_prec **lst, int *size)
 	else if (s == 'x' || s == 'X')
 		ft_arg_x(arg, s == 'X', &(*lst), size);
 	else
-		ft_print_errors(&(*lst), s, i, size);
+		ft_print_errors(&(*lst), &s, *i, size);
 }
 
 void		ft_process_args(const char *s, va_list arg, t_prec *lst, int *size)
@@ -52,7 +52,7 @@ void		ft_process_args(const char *s, va_list arg, t_prec *lst, int *size)
 		{
 			if (ft_strchr("-.*0123456789", s[i]))
 				ft_treat_prec(arg, &i, s, &lst);
-			ft_treat(s + i, arg, &lst, size);
+			ft_treat(s[i], arg, &lst, size, &i);
 			i++;
 		}
 		else

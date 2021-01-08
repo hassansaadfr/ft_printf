@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 21:35:57 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/08 18:07:52 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
 {
-	if (align_right)
+	if (!align_right)
 	{
 		ft_print_char(' ', nb_space);
 		ft_part_putstr(s, after_dot);
