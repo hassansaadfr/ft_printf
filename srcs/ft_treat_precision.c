@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 16:36:58 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 23:47:22 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,8 @@ static t_prec	*ft_lst_init(va_list arg, char *str)
 		i++;
 	if (str[i] && str[i] == '.')
 		tmp->after_dot = ft_get_star_arg(arg, str + i + 1, 0, tmp);
-	tmp->type = 0;
 	if (ft_strchr("csxXpuid%", str[ft_strlen(str) - 1]))
 		tmp->type = str[ft_strlen(str) - 1];
-	if (tmp->sub == 1 && tmp->align_right == 1 && ft_strchr("iuxXd", tmp->type))
-		tmp->sub = 0;
 	return (tmp);
 }
 
