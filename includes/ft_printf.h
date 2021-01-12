@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/11 23:04:24 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 23:41:36 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 # define FT_PRINTF_H
 # include <stdlib.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include <unistd.h>
 
 # define HEXA_LOWER "0123456789abcdef"
 # define HEXA_UPPER "0123456789ABCDEF"
 # define NOT_SET -1
 
-typedef struct			s_precision {
+typedef struct s_precision	t_prec;
+struct	s_precision {
 	int					sub;
 	int					align_right;
 	int					size;
 	int					after_dot;
 	char				type;
-}						t_prec;
+};
 
 void	ft_putchar(char c);
 char	*ft_itoa(long int nb);
@@ -41,7 +42,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *s, int c);
 
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *str, ...);
 char	*ft_convert_hex(long int var, char *base_to);
 char	*convert_number(long long nbr, char *base);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
@@ -49,7 +50,7 @@ void	ft_process_args(const char *s, va_list arg, t_prec *lst, int *size);
 void	ft_treat_prec(va_list arg, int *i, const char *str, t_prec **lst);
 void	ft_arg_c(va_list arg, char c, t_prec **lst, int *size);
 void	ft_arg_d(va_list arg, t_prec **lst, int *size, int is_signed);
-void    ft_arg_s(va_list arg, t_prec **lst, int *size);
+void	ft_arg_s(va_list arg, t_prec **lst, int *size);
 void	ft_arg_x(va_list arg, int is_upper, t_prec **lst, int *size);
 void	ft_arg_p(va_list arg, t_prec **lst, int *size);
 void	ft_lst_prec_delone(t_prec **lst);

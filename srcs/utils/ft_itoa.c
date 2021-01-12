@@ -6,11 +6,11 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:03:10 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/11 16:20:18 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 23:34:35 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int		ft_nb_len(long nb)
 {

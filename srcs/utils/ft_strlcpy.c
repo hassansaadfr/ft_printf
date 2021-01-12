@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 19:21:25 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/11/18 19:46:18 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/18 14:35:55 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/12 23:34:51 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strnstr(const char *str, const char *find, size_t nb)
+size_t		ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t		i;
-	size_t		j;
-	char		*string;
+	size_t	i;
 
-	string = (char*)str;
 	i = 0;
-	j = 0;
-	if (find[0] == '\0')
-		return (string);
-	while (string[i])
+	if (!dst || !src)
+		return (0);
+	if (size > 0)
 	{
-		while (j < nb && find[j] == string[i + j])
+		while (i < size - 1 && src[i])
 		{
-			if (ft_strlen(find) + i > nb)
-			{
-				return (0);
-			}
-			if (find[j + 1] == '\0' || j == nb)
-				return (string + i);
-			j++;
+			dst[i] = src[i];
+			i++;
 		}
-		i++;
-		j = 0;
+		dst[i] = '\0';
 	}
-	return (0);
+	return (ft_strlen(src));
 }

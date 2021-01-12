@@ -6,7 +6,7 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/12 23:33:20 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/11 16:26:39 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,12 @@ NAME		=	libftprintf.a
 SRCS		=	ft_printf.c srcs/parse_args.c \
 				srcs/converter/utils.c srcs/converter/ft_convert_base.c \
 				srcs/converter/ft_convert_base2.c srcs/ft_treat_precision.c \
-				srcs/converter/ft_utoa.c \
 				srcs/ft_arg_c.c srcs/ft_arg_d.c srcs/ft_arg_p.c \
-				srcs/ft_arg_s.c srcs/ft_arg_x.c srcs/utils/ft_atoi.c \
-				srcs/utils/ft_itoa.c srcs/utils/ft_putchar.c \
-				srcs/utils/ft_putstr.c srcs/utils/ft_strlen.c \
-				srcs/utils/ft_strjoin.c srcs/utils/ft_substr.c \
-				srcs/utils/ft_calloc.c srcs/utils/ft_bzero.c \
-				srcs/utils/ft_strdup.c srcs/utils/ft_strlcpy.c \
-				srcs/utils/ft_strchr.c
+				srcs/ft_arg_s.c srcs/ft_arg_x.c libft/ft_atoi.c libft/ft_itoa.c \
+				libft/ft_putchar.c libft/ft_putstr.c libft/ft_strlen.c \
+				libft/ft_strjoin.c libft/ft_substr.c libft/ft_calloc.c \
+				libft/ft_bzero.c libft/ft_strdup.c libft/ft_strlcpy.c \
+				libft/ft_strchr.c srcs/converter/ft_utoa.c
 
 HEADERS		=	includes
 

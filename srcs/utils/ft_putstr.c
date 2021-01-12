@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/21 17:44:36 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/11/22 17:49:45 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/12/20 17:00:23 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/12 23:34:40 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void			ft_putstr(const char *s)
 {
-	if (!s || !fd)
+	if (!s || !*s)
 		return ;
-	while (*s && write(fd, s, 1) && s++)
-		;
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+	}
 }

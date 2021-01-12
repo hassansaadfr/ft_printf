@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 16:35:51 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 23:26:01 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,28 @@ static void	ft_print_errors(t_prec **lst, const char *s, int end, int *size)
 		ft_lst_prec_delone(&(*lst));
 }
 
-void		ft_treat(char *s, va_list arg, t_prec **lst, int *size, int *i)
+static int	ft_treat(char *s, va_list arg, t_prec **lst, int *i)
 {
+	int		size;
+
+	size = 0;
 	if (*lst && (*lst)->type == 0)
 		ft_lst_prec_delone(&(*lst));
 	if (s[*i] == 'c' || s[*i] == '%')
-		ft_arg_c(arg, s[*i], &(*lst), size);
+		ft_arg_c(arg, s[*i], &(*lst), &size);
 	else if (s[*i] == 's')
-		ft_arg_s(arg, &(*lst), size);
+		ft_arg_s(arg, &(*lst), &size);
 	else if (s[*i] == 'p')
-		ft_arg_p(arg, &(*lst), size);
+		ft_arg_p(arg, &(*lst), &size);
 	else if (s[*i] == 'd' || s[*i] == 'i')
-		ft_arg_d(arg, &(*lst), size, 1);
+		ft_arg_d(arg, &(*lst), &size, 1);
 	else if (s[*i] == 'u')
-		ft_arg_d(arg, &(*lst), size, 0);
+		ft_arg_d(arg, &(*lst), &size, 0);
 	else if (s[*i] == 'x' || s[*i] == 'X')
-		ft_arg_x(arg, s[*i] == 'X', &(*lst), size);
+		ft_arg_x(arg, s[*i] == 'X', &(*lst), &size);
 	else
-		ft_print_errors(&(*lst), s, *i, size);
+		ft_print_errors(&(*lst), s, *i, &size);
+	return (size);
 }
 
 void		ft_process_args(const char *s, va_list arg, t_prec *lst, int *size)
@@ -56,7 +60,7 @@ void		ft_process_args(const char *s, va_list arg, t_prec *lst, int *size)
 		{
 			if (ft_strchr("-.*0123456789", s[i]))
 				ft_treat_prec(arg, &i, s, &lst);
-			ft_treat((char*)s, arg, &lst, size, &i);
+			*size += ft_treat((char*)s, arg, &lst, &i);
 			i++;
 		}
 		else

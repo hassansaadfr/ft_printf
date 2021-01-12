@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/21 22:24:03 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/11/21 22:26:22 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/20 23:43:34 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/12 23:34:57 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+char	*ft_substr(char const *s, size_t start, size_t len)
 {
-	if (!lst)
+	char		*str;
+	size_t		i;
+	size_t		s_len;
+	size_t		size;
+
+	if (!s)
 		return (NULL);
-	while (lst->next)
+	s_len = ft_strlen(s);
+	size = s_len <= start ? 1 : len + 1;
+	i = 0;
+	if (!(str = ft_calloc(size, sizeof(char))))
+		return (NULL);
+	if (size == 1)
 	{
-		lst = lst->next;
+		str[0] = '\0';
+		return (str);
 	}
-	return (lst);
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

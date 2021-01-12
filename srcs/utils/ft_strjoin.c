@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 13:10:03 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 13:02:33 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/21 00:54:47 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/12 23:34:49 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t		ft_strlen(const char *str)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
+	char	*str;
+	int		i;
+	int		len;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (*str++)
+	if (!s2 || !s1)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	i = 0;
+	if (!(str = malloc(len + 1 * sizeof(*s1))))
+		return (NULL);
+	str[len--] = '\0';
+	while (*s1)
 	{
-		len++;
+		str[i] = *s1;
+		i++;
+		s1++;
 	}
-	return (len);
+	while (*s2)
+	{
+		str[i] = *s2;
+		i++;
+		s2++;
+	}
+	return (str);
 }

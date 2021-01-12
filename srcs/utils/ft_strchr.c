@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 03:22:17 by hsaadaou          #+#    #+#             */
-/*   Updated: 2020/11/20 03:27:49 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/16 22:33:13 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/12 23:34:42 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	len;
-	char	*str;
+	char *str;
 
-	len = ft_strlen(s);
-	if (!(str = malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	ft_strlcpy(str, s, len + 1);
-	return (str);
+	str = (char*)s;
+	while (*str != c)
+	{
+		if (*str == '\0')
+			return (NULL);
+		str++;
+	}
+	return (&(*str));
 }
