@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:43:13 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 21:32:59 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:40:34 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static int		ft_print_precision(int zeros, int spaces, char *arg, int right)
 {
-	if (right)
+	if (right != -1)
 	{
 		ft_print_char(' ', spaces - 2);
-		ft_putstr("0x");
+		ft_putstr("0x10");
 		ft_print_char('0', zeros);
 		ft_putstr(arg);
 	}
 	else
 	{
-		ft_putstr("0x");
+		ft_putstr("0x10");
 		ft_print_char('0', zeros);
 		ft_putstr(arg);
 		ft_print_char(' ', spaces - 2);
 	}
-	return (spaces + zeros + 2 + ft_strlen(arg));
+	return (spaces + zeros + 4 + ft_strlen(arg));
 }
 
 static void		ft_treat_p_precision(char *arg, t_prec *lst, int *size)
@@ -41,8 +41,8 @@ static void		ft_treat_p_precision(char *arg, t_prec *lst, int *size)
 	if (lst->size != NOT_SET)
 		zeros = lst->after_dot - ft_strlen(arg);
 	if (lst->size > (int)ft_strlen(arg))
-		space = lst->size - ft_strlen(arg) - zeros - 2;
-	*size = ft_print_precision(zeros, space, arg, lst->align_right == NOT_SET);
+		space = lst->size - ft_strlen(arg);
+	*size += ft_print_precision(zeros, space, arg, lst->align_right == NOT_SET);
 }
 
 void			ft_arg_p(va_list arg, t_prec **lst, int *size)
@@ -62,7 +62,7 @@ void			ft_arg_p(va_list arg, t_prec **lst, int *size)
 	{
 		argument = (long int)va_arg(arg, long int);
 		out = ft_convert_hex(argument, HEXA_LOWER);
-		dest = ft_strjoin("0x", out);
+		dest = ft_strjoin("0x10", out);
 		ft_putstr(dest);
 		*size += ft_strlen(dest);
 		free(dest);

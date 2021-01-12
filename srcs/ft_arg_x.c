@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:55 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/08 18:42:52 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/11 23:04:24 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_treat_x_precision(char *arg, t_prec *lst, int *size)
 	space_nb = lst->size - ((int)ft_strlen(arg) + zeros);
 	if (lst->align_right == NOT_SET)
 	{
-		if (lst->substitution != NOT_SET)
+		if (lst->sub != NOT_SET)
 			ft_print_char('0', space_nb);
 		else
 			ft_print_char(' ', space_nb);

@@ -6,13 +6,11 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 21:47:31 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:36:58 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// TODO Blinder la function pour recuperer la precision Checker si double point double moins etc ... return si erreur pour print
 
 void			ft_lst_prec_delone(t_prec **lst)
 {
@@ -21,7 +19,7 @@ void			ft_lst_prec_delone(t_prec **lst)
 	(*lst)->after_dot = 0;
 	(*lst)->align_right = 0;
 	(*lst)->size = 0;
-	(*lst)->substitution = 0;
+	(*lst)->sub = 0;
 	(*lst)->type = 0;
 	(*lst) = NULL;
 	free(*lst);
@@ -34,20 +32,30 @@ static int		ft_lst_new_prec(t_prec **lst)
 	(*lst)->after_dot = -1;
 	(*lst)->align_right = -1;
 	(*lst)->size = 0;
-	(*lst)->substitution = -1;
+	(*lst)->sub = -1;
 	(*lst)->type = 0;
 	return (1);
 }
 
-static int		ft_get_star_arg(va_list arg, char *str)
+static int		ft_get_star_arg(va_list arg, char *str, int is_size, t_prec *t)
 {
 	int		out;
+	int		temp;
 
-	out = 0;
+	out = -1;
+	temp = 0;
 	if (str[0] == '*')
-		out = (int)va_arg(arg, int);
+		temp = (int)va_arg(arg, int);
 	else
-		out = ft_atoi(str);
+		temp = ft_atoi(str);
+	if (temp >= 0)
+		out = temp;
+	if (temp < 0 && is_size == 1)
+	{
+		t->sub = -1;
+		t->align_right = 1;
+		out = temp * -1;
+	}
 	return (out);
 }
 
@@ -66,19 +74,19 @@ static t_prec	*ft_lst_init(va_list arg, char *str)
 	}
 	if (str[i] == '0')
 	{
-		tmp->substitution = 1;
+		tmp->sub = 1;
 		i++;
 	}
-	tmp->size = ft_get_star_arg(arg, str + i);
-	if (tmp->size < 0 && tmp->substitution == 1)
-		tmp->substitution = 0;
-	while (str[i] && ((str[i] >= '0' && str[i] <= '9') || str[i] == '*'))
+	tmp->size = ft_get_star_arg(arg, str + i, 1, tmp);
+	while (str[i] && ft_strchr("0123456789*-", str[i]))
 		i++;
 	if (str[i] && str[i] == '.')
-		tmp->after_dot = ft_get_star_arg(arg, str + i + 1);
+		tmp->after_dot = ft_get_star_arg(arg, str + i + 1, 0, tmp);
 	tmp->type = 0;
-	if (ft_strchr("csxXpuid", str[ft_strlen(str) - 1]))
+	if (ft_strchr("csxXpuid%", str[ft_strlen(str) - 1]))
 		tmp->type = str[ft_strlen(str) - 1];
+	if (tmp->sub == 1 && tmp->align_right == 1 && ft_strchr("iuxXd", tmp->type))
+		tmp->sub = 0;
 	return (tmp);
 }
 

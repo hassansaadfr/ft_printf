@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:00 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/07 21:35:21 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/11 23:04:24 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_treat_char_precision(char arg, t_prec *lst, int *size)
 	{
 		if (lst->align_right == NOT_SET)
 		{
-			if (lst->substitution == 1)
+			if (lst->sub == 1)
 				ft_print_char('0', lst->size - 1);
 			else
 				ft_print_char(' ', lst->size - 1);

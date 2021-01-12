@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/21 17:03:10 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/11 16:20:18 by hsaadaou         ###   ########.fr       */
+/*   Created: 2021/01/11 16:21:22 by hsaadaou          #+#    #+#             */
+/*   Updated: 2021/01/11 16:22:07 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int		ft_nb_len(long nb)
+static int		ft_nb_len(unsigned int nb)
 {
 	int		len;
 
@@ -30,11 +30,11 @@ static int		ft_nb_len(long nb)
 	return (len);
 }
 
-char			*ft_itoa(long int nb)
+char			*ft_utoa(unsigned int nb)
 {
-	char		*str;
-	long int	nbr;
-	int			len;
+	char			*str;
+	unsigned int	nbr;
+	int				len;
 
 	nbr = nb;
 	len = ft_nb_len(nbr);
