@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 01:47:41 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 14:59:04 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static int	ft_get_spaces(t_prec *lst, char *arg)
 	int		result;
 	int		len;
 
-	len = (int)ft_strlen(arg);
+	if (arg[0] == '-' && (int)ft_strlen(arg) <= lst->after_dot)
+		len = lst->after_dot + 1;
+	else
+		len = (int)ft_strlen(arg);
 	result = 0;
 	if (lst->sub == NOT_SET || lst->after_dot != NOT_SET)
 	{
