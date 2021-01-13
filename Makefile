@@ -6,13 +6,13 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/12 23:33:20 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/13 03:15:28 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	clang
 
-FLAGS		=	-Wall -Wextra -Werror -g
+FLAGS		=	-Wall -Wextra -Werror
 
 NAME		=	libftprintf.a
 
@@ -26,7 +26,6 @@ SRCS		=	ft_printf.c srcs/parse_args.c \
 				srcs/utils/ft_putstr.c srcs/utils/ft_strlen.c \
 				srcs/utils/ft_strjoin.c srcs/utils/ft_substr.c \
 				srcs/utils/ft_calloc.c srcs/utils/ft_bzero.c \
-				srcs/utils/ft_strdup.c srcs/utils/ft_strlcpy.c \
 				srcs/utils/ft_strchr.c
 
 HEADERS		=	includes

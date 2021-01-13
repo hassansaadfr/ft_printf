@@ -6,25 +6,31 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:39 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/09 16:12:39 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 03:00:16 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print(char *s, int nb_space, size_t after_dot, int align_right)
+static int	ft_print(char *s, int nb_space, size_t after_dot, t_prec *lst)
 {
-	if (align_right == NOT_SET)
+	int		total_len;
+
+	total_len = 0;
+	if (lst->align_right == NOT_SET)
 	{
-		ft_print_char(' ', nb_space);
-		ft_part_putstr(s, after_dot);
+		if (lst->sub == 1)
+			total_len += ft_print_char('0', nb_space);
+		else
+			total_len += ft_print_char(' ', nb_space);
+		total_len += ft_part_putstr(s, after_dot);
 	}
 	else
 	{
-		ft_part_putstr(s, after_dot);
-		ft_print_char(' ', nb_space);
+		total_len += ft_part_putstr(s, after_dot);
+		total_len += ft_print_char(' ', nb_space);
 	}
-	return (nb_space + after_dot);
+	return (total_len);
 }
 
 static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
@@ -45,7 +51,7 @@ static void	ft_treat_s_precision(char *arg, t_prec *lst, int *size)
 		if (lst->size > len)
 			nb_space = lst->size - len;
 	}
-	*size += ft_print(arg, nb_space, lst->after_dot, lst->align_right);
+	*size += ft_print(arg, nb_space, lst->after_dot, lst);
 }
 
 void		ft_arg_s(va_list arg, t_prec **lst, int *size)

@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 23:26:01 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 02:49:36 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static void	ft_print_errors(t_prec **lst, const char *s, int end, int *size)
 {
 	int i;
+	int	total_len;
 
+	total_len = 0;
 	i = end;
 	while (s[i] != '%' && s[i])
 		i--;
-	ft_part_putstr(s + i, (end - i) + 1);
-	*size += end - i + 1;
+	total_len += ft_part_putstr(s + i, (end - i) + 1);
+	*size += total_len;
 	if (*lst)
 		ft_lst_prec_delone(&(*lst));
 }
@@ -42,31 +44,34 @@ static int	ft_treat(char *s, va_list arg, t_prec **lst, int *i)
 		ft_arg_d(arg, &(*lst), &size, 1);
 	else if (s[*i] == 'u')
 		ft_arg_d(arg, &(*lst), &size, 0);
-	else if (s[*i] == 'x' || s[*i] == 'X')
-		ft_arg_x(arg, s[*i] == 'X', &(*lst), &size);
+	else if (s[*i] == 'x' || s[*i] == 'X' || s[*i] == 'o')
+		ft_arg_x(arg, s[*i], &(*lst), &size);
 	else
 		ft_print_errors(&(*lst), s, *i, &size);
 	return (size);
 }
 
-void		ft_process_args(const char *s, va_list arg, t_prec *lst, int *size)
+int			ft_process_args(const char *s, va_list arg, t_prec *lst)
 {
 	int		i;
+	int		total_len;
 
 	i = 0;
+	total_len = 0;
 	while (s[i])
 	{
 		if (s[i] == '%' && ++i && s[i])
 		{
 			if (ft_strchr("-.*0123456789", s[i]))
 				ft_treat_prec(arg, &i, s, &lst);
-			*size += ft_treat((char*)s, arg, &lst, &i);
+			total_len += ft_treat((char*)s, arg, &lst, &i);
 			i++;
 		}
 		else
 		{
 			ft_putchar(s[i++]);
-			(*size)++;
+			total_len++;
 		}
 	}
+	return (total_len);
 }

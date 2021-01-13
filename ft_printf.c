@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/08 18:29:27 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 02:03:48 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int		ft_printf(const char *str, ...)
 
 	size = 0;
 	va_start(arg_list, str);
-	ft_process_args(str, arg_list, NULL, &size);
+	size = ft_process_args(str, arg_list, NULL);
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:08:37 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/06 13:53:04 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 02:22:28 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,30 @@ char	*ft_convert_hex(long int var, char *base_to)
 	return (address);
 }
 
-void	ft_part_putstr(const char *s, size_t len)
+int		ft_part_putstr(const char *s, size_t len)
 {
 	size_t	i;
 
 	i = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (*s && i < len)
 	{
 		write(1, s, 1);
 		s++;
 		i++;
 	}
+	return (i);
 }
 
-void	ft_print_char(char c, int nb)
+int		ft_print_char(char c, int nb)
 {
+	int	count;
+
+	count = nb;
 	while (nb-- > 0)
 		ft_putchar(c);
+	if (count > 0)
+		return (count);
+	return (0);
 }

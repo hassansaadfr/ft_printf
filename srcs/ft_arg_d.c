@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:42:26 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 16:31:02 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 01:47:41 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,21 @@ static int	ft_get_zeros(t_prec *lst, char *arg)
 static int	ft_print_result(char *arg, int zeros, int spaces, int align_right)
 {
 	int		is_negative;
+	int		total_len;
 
+	total_len = 0;
 	is_negative = 0;
 	if (arg[0] == '-')
 		is_negative = 1;
 	if (align_right != 1)
-		ft_print_char(' ', spaces);
+		total_len += ft_print_char(' ', spaces);
 	if (is_negative == 1)
 		ft_putchar('-');
-	ft_print_char('0', zeros);
+	total_len += ft_print_char('0', zeros);
 	ft_putstr(arg + is_negative);
 	if (align_right == 1)
-		ft_print_char(' ', spaces);
-	return (spaces + zeros + ft_strlen(arg));
+		total_len += ft_print_char(' ', spaces);
+	return (total_len + ft_strlen(arg));
 }
 
 static void	ft_treat_int_prec(char *arg, t_prec *lst, int *size)
