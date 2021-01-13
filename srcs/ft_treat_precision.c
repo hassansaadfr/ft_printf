@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 15:38:35 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:41:59 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,17 @@ static int		ft_get_star_arg(va_list arg, char *str, int is_size, t_prec *t)
 	if (str[0] == '*')
 		temp = (int)va_arg(arg, int);
 	else
+	{
 		temp = ft_atoi(str);
+		if (temp == 0)
+			while (ft_strchr("0-", *str))
+				str++;
+			if (*str == '*')
+			{
+				t->sub = -1;
+				temp = (int)va_arg(arg, int);
+			}
+	}
 	if (temp >= 0)
 		out = temp;
 	if (temp < 0 && is_size == 1)
