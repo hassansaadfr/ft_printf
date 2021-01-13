@@ -6,35 +6,26 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 22:04:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 18:41:59 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:25:02 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			ft_lst_prec_delone(t_prec **lst)
+static int		ft_get_multiple_size(char *str, va_list arg, t_prec *t)
 {
-	if (!*lst)
-		return ;
-	(*lst)->after_dot = 0;
-	(*lst)->align_right = 0;
-	(*lst)->size = 0;
-	(*lst)->sub = 0;
-	(*lst)->type = 0;
-	(*lst) = NULL;
-	free(*lst);
-}
+	int		temp;
 
-static int		ft_lst_new_prec(t_prec **lst)
-{
-	if (!(*lst = malloc(sizeof(t_prec))))
-		return (-1);
-	(*lst)->after_dot = -1;
-	(*lst)->align_right = -1;
-	(*lst)->size = 0;
-	(*lst)->sub = -1;
-	(*lst)->type = 0;
-	return (1);
+	temp = 0;
+	temp = ft_atoi(str);
+	while (temp == 0 && ft_strchr("0-", *str))
+		str++;
+	if (*str == '*')
+	{
+		t->sub = -1;
+		temp = (int)va_arg(arg, int);
+	}
+	return (temp);
 }
 
 static int		ft_get_star_arg(va_list arg, char *str, int is_size, t_prec *t)
@@ -47,17 +38,7 @@ static int		ft_get_star_arg(va_list arg, char *str, int is_size, t_prec *t)
 	if (str[0] == '*')
 		temp = (int)va_arg(arg, int);
 	else
-	{
-		temp = ft_atoi(str);
-		if (temp == 0)
-			while (ft_strchr("0-", *str))
-				str++;
-			if (*str == '*')
-			{
-				t->sub = -1;
-				temp = (int)va_arg(arg, int);
-			}
-	}
+		temp = ft_get_multiple_size(str, arg, t);
 	if (temp >= 0)
 		out = temp;
 	if (temp < 0 && is_size == 1)
@@ -92,7 +73,7 @@ static t_prec	*ft_lst_init(va_list arg, char *str)
 		i++;
 	if (str[i] && str[i] == '.')
 		tmp->after_dot = ft_get_star_arg(arg, str + i + 1, 0, tmp);
-	if (ft_strchr("csxXpuid%", str[ft_strlen(str) - 1]))
+	if (ft_strchr("csxXpuido%", str[ft_strlen(str) - 1]))
 		tmp->type = str[ft_strlen(str) - 1];
 	return (tmp);
 }

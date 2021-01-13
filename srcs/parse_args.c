@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:10:12 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 02:49:36 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:16:47 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			ft_process_args(const char *s, va_list arg, t_prec *lst)
 	total_len = 0;
 	while (s[i])
 	{
-		if (s[i] == '%' && ++i && s[i])
+		if (s[i] == '%' && ++i && s[i] && i < (int)ft_strlen(s))
 		{
 			if (ft_strchr("-.*0123456789", s[i]))
 				ft_treat_prec(arg, &i, s, &lst);

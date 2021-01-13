@@ -6,17 +6,17 @@
 #    By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/04 18:31:54 by hsaadaou          #+#    #+#              #
-#    Updated: 2021/01/13 15:42:01 by hsaadaou         ###   ########.fr        #
+#    Updated: 2021/01/13 21:26:00 by hsaadaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	clang
 
-FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror -g
 
 NAME		=	libftprintf.a
 
-SRCS		=	ft_printf.c srcs/parse_args.c \
+SRCS		=	ft_printf.c srcs/parse_args.c srcs/ft_lst_init.c \
 				srcs/converter/utils.c srcs/converter/ft_convert_base.c \
 				srcs/converter/ft_convert_base2.c srcs/ft_treat_precision.c \
 				srcs/converter/ft_utoa.c \

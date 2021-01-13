@@ -6,13 +6,20 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 23:43:34 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 23:34:57 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:01:36 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_substr(char const *s, size_t start, size_t len)
+static size_t	getlen(size_t len, size_t s_len, size_t start)
+{
+	if (s_len <= start)
+		return (1);
+	return (len + 1);
+}
+
+char			*ft_substr(char const *s, size_t start, size_t len)
 {
 	char		*str;
 	size_t		i;
@@ -22,7 +29,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
-	size = s_len <= start ? 1 : len + 1;
+	size = getlen(len, s_len, start);
 	i = 0;
 	if (!(str = ft_calloc(size, sizeof(char))))
 		return (NULL);

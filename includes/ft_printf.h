@@ -6,7 +6,7 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 03:14:13 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:21:13 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_bzero(void *s, size_t n);
 char	*ft_strchr(const char *s, int c);
 
 int		ft_printf(const char *str, ...);
+int		ft_lst_new_prec(t_prec **lst);
 char	*ft_convert_hex(long int var, char *base_to);
 char	*convert_number(long long nbr, char *base);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
