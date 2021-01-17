@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/17 15:39:21 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/18 14:35:55 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/11/20 01:03:36 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *str, ...)
+size_t		ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	va_list		arg_list;
-	int			size;
+	size_t	i;
 
-	size = 0;
-	va_start(arg_list, str);
-	size = ft_process_args(str, arg_list, NULL);
-	return (size);
+	i = 0;
+	if (!dst || !src)
+		return (0);
+	if (size > 0)
+	{
+		while (i < size - 1 && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
 }

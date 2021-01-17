@@ -6,16 +6,16 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:35:11 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/13 21:21:13 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2021/01/17 15:43:09 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-
 # define HEXA_LOWER "0123456789abcdef"
 # define HEXA_UPPER "0123456789ABCDEF"
 # define NOT_SET -1
@@ -29,16 +29,16 @@ struct	s_precision {
 	char				type;
 };
 
-void	ft_putchar(char c);
-char	*ft_itoa(long int nb);
-int		ft_atoi(char *str);
-char	*ft_substr(char const *s, size_t start, size_t len);
-void	ft_putstr(const char *s);
-size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *s, int c);
+// void	ft_putchar(char c);
+// char	*ft_itoa(long int nb);
+// int		ft_atoi(char *str);
+// char	*ft_substr(char const *s, size_t start, size_t len);
+// void	ft_putstr(const char *s);
+// size_t	ft_strlen(const char *str);
+// char	*ft_strjoin(char const *s1, char const *s2);
+// void	*ft_calloc(size_t count, size_t size);
+// void	ft_bzero(void *s, size_t n);
+// char	*ft_strchr(const char *s, int c);
 
 int		ft_printf(const char *str, ...);
 int		ft_lst_new_prec(t_prec **lst);

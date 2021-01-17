@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/17 15:39:21 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/19 22:08:22 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/11/19 22:49:14 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *str, ...)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	va_list		arg_list;
-	int			size;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	size = 0;
-	va_start(arg_list, str);
-	size = ft_process_args(str, arg_list, NULL);
-	return (size);
+	i = 0;
+	str1 = (unsigned char *)src;
+	str2 = (unsigned char *)dest;
+	if (!n || dest == src)
+		return (dest);
+	while (n--)
+	{
+		str2[i] = str1[i];
+		i++;
+	}
+	return (dest);
 }

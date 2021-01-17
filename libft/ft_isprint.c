@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/17 15:39:21 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/18 20:08:49 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/11/22 17:31:55 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int		ft_printf(const char *str, ...)
+int		ft_isprint(int c)
 {
-	va_list		arg_list;
-	int			size;
-
-	size = 0;
-	va_start(arg_list, str);
-	size = ft_process_args(str, arg_list, NULL);
-	return (size);
+	return (c >= 32 && c <= 126);
 }

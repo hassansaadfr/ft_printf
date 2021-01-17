@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/17 15:39:21 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/21 17:47:20 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/11/21 17:48:29 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *str, ...)
+void	ft_putendl_fd(char *s, int fd)
 {
-	va_list		arg_list;
-	int			size;
-
-	size = 0;
-	va_start(arg_list, str);
-	size = ft_process_args(str, arg_list, NULL);
-	return (size);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

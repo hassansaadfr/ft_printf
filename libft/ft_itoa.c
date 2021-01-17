@@ -6,11 +6,11 @@
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:03:10 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/12 23:34:35 by hsaadaou         ###   ########.fr       */
+/*   Updated: 2020/11/22 18:31:51 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int		ft_nb_len(long nb)
 {
@@ -30,11 +30,11 @@ static int		ft_nb_len(long nb)
 	return (len);
 }
 
-char			*ft_itoa(long int nb)
+char			*ft_itoa(int nb)
 {
-	char		*str;
-	long int	nbr;
-	int			len;
+	char	*str;
+	long	nbr;
+	int		len;
 
 	nbr = nb;
 	len = ft_nb_len(nbr);

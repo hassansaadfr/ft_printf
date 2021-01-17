@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsaadaou <hsaadaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 18:36:46 by hsaadaou          #+#    #+#             */
-/*   Updated: 2021/01/17 15:39:21 by hsaadaou         ###   ########.fr       */
+/*   Created: 2020/11/21 22:33:23 by hsaadaou          #+#    #+#             */
+/*   Updated: 2020/11/21 22:41:25 by hsaadaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *str, ...)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	va_list		arg_list;
-	int			size;
+	t_list *current;
 
-	size = 0;
-	va_start(arg_list, str);
-	size = ft_process_args(str, arg_list, NULL);
-	return (size);
+	current = *lst;
+	if (!del)
+		return ;
+	while (current->next)
+	{
+		del((*lst)->content);
+		current = *lst;
+		*lst = current->next;
+		free(current);
+	}
+	*lst = NULL;
 }
